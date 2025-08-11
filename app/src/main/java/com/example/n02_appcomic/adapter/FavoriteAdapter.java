@@ -1,6 +1,7 @@
 package com.example.n02_appcomic.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.n02_appcomic.ComicDetailActivity;
 import com.example.n02_appcomic.R;
+import com.example.n02_appcomic.model.Category;
 import com.example.n02_appcomic.model.ChaptersLatest;
 import com.example.n02_appcomic.model.Item;
 
@@ -49,25 +52,35 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         }
 
         // Chap mới nhất
-//        if (item.getCategory() != null && !item.getCategory().isEmpty()) {
-//            holder.txtCategory.setText(item.getChaptersLatests().get(0).getChapterName());
-//        } else {
-//            holder.txtCategory.setText("Chưa có chap");
-//        }
-        List<ChaptersLatest> latestChapters = item.getChaptersLatests();
-        if (latestChapters != null && !latestChapters.isEmpty()) {
-            String chapterText = latestChapters.get(0).getChapterName(); // hoặc getChapterTitle()
-            holder.txtCategory.setText("Chương "+ chapterText);
+        // Thể loại
+        if (item.getCategory() != null && !item.getCategory().isEmpty()) {
+            // Lấy danh sách tên thể loại và nối bằng dấu phẩy
+            StringBuilder categoriesText = new StringBuilder();
+            for (Category category : item.getCategory()) {
+                if (categoriesText.length() > 0) categoriesText.append(", ");
+                categoriesText.append(category.getName());
+            }
+            holder.txtCategory.setText(categoriesText.toString());
         } else {
-            holder.txtCategory.setText("Chưa có chương");
+            holder.txtCategory.setText("Không rõ thể loại");
         }
 
+
+        //Log.d("Chuong", latestChapters.toString());
         // Load ảnh bằng Glide
         String imageUrl = "https://img.otruyenapi.com/uploads/comics/" + item.getThumbURL();
         Glide.with(context)
                 .load(imageUrl)
                 .placeholder(R.drawable.bg_image)
                 .into(holder.imgComic);
+
+        //click load truyện
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, ComicDetailActivity.class);
+            intent.putExtra("slug", item.getSlug());
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
