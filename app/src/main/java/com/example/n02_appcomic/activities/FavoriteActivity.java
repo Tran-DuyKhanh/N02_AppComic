@@ -32,13 +32,12 @@ public class FavoriteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorite);
 
         // Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbarFavorites);
+        Toolbar toolbar = findViewById(R.id.toolbarFavorite);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Yêu thích");
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Danh sách truyện yêu thích");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // nút back
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
         }
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
 

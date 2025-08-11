@@ -5,6 +5,7 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -53,8 +54,16 @@ public class ReadChapterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_chapter);
 
+        /// ///Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbarRead);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // nút back
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        /// ///
         recyclerView = findViewById(R.id.rcvImageChapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setHasFixedSize(false);
 
@@ -83,6 +92,12 @@ public class ReadChapterActivity extends AppCompatActivity {
         // Observer chỉ tạo 1 lần
         chapterObserver = response -> {
             if (response != null && response.getData() != null) {
+                /// ///
+                String chapterName = response.getData().getItem().getChapter_name();
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Chap " + chapterName);
+                }
+                /// ///
                 List<ChapterImage> chapterImages = response.getData().getItem().getChapter_image();
                 chapterImageAdapter = new ChapterImageAdapter(
                         this,
