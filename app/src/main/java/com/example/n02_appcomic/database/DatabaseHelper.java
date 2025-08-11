@@ -217,5 +217,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public List<String> getAllFavoriteSlugs(int userId) {
+        List<String> slugs = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT slug FROM favorites WHERE user_id = ?", new String[]{String.valueOf(userId)});
+        if (cursor.moveToFirst()) {
+            do {
+                slugs.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return slugs;
+    }
+
 }
 
