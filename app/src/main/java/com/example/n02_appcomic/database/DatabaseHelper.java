@@ -117,6 +117,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rows > 0;
     }
 
+    public boolean removeFavoriteBySlug(int userId, String slug) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rows = db.delete("favorites", "user_id=? AND slug=?", new String[]{String.valueOf(userId), slug});
+        db.close();
+        return rows > 0;
+    }
+
     // Kiểm tra đã yêu thích chưa
     public boolean isFavorite(String userId, String mangaId) {
         if (mangaId == null || userId == null) {

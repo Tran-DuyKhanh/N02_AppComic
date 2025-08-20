@@ -27,7 +27,7 @@
                 android:contentDescription="Quay lại"
                 android:focusable="true"
                 android:padding="4dp"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/ic_back_left" />
 
             <TextView
                 android:id="@+id/tvTitle"
