@@ -14,6 +14,7 @@ import com.example.n02_appcomic.R;
 import com.example.n02_appcomic.activities.AboutActivity;
 import com.example.n02_appcomic.activities.FavoriteActivity;
 import com.example.n02_appcomic.activities.LoginActivity;
+import com.example.n02_appcomic.activities.SettingActivity;
 import com.example.n02_appcomic.database.DatabaseHelper;
 import com.example.n02_appcomic.model.User;
 import com.example.n02_appcomic.utils.SessionManager;
@@ -57,6 +58,10 @@ public class FragmentAccount extends Fragment {
         }
         btnyeuthich.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), FavoriteActivity.class);
+            startActivity(intent);
+        });
+        btncaidat.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), SettingActivity.class);
             startActivity(intent);
         });
 

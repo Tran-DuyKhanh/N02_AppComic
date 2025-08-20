@@ -20,7 +20,7 @@
             android:contentDescription="Icon trái"
             android:focusable="true"
             android:padding="4dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back_left" />
 
         <!-- View trống để đẩy icon phải sang sát lề -->
         <View

@@ -29,6 +29,7 @@
         <activity android:name=".activities.AboutActivity"/>
         <activity android:name=".activities.CategoryComicActivity"/>
         <activity android:name=".activities.FavoriteActivity"/>
+        <activity android:name=".activities.SettingActivity"/>
 
     </application>
 

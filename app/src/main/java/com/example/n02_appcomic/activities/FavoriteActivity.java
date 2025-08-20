@@ -1,6 +1,7 @@
 package com.example.n02_appcomic.activities;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -51,8 +52,19 @@ public class FavoriteActivity extends AppCompatActivity {
         int userId = sessionManager.getUserId();
 
         // Adapter (gắn với favoriteComics)
-        adapter = new FavoriteAdapter(this, favoriteComics);
+        adapter = new FavoriteAdapter(this, favoriteComics, position -> {
+            Item removedItem = favoriteComics.get(position);
+
+            // Xóa trong DB
+            dbHelper.removeFavoriteBySlug(userId, removedItem.getSlug());
+
+            // Xóa trong danh sách + cập nhật UI
+            adapter.removeItem(position);
+
+            Toast.makeText(this, "Đã xóa " + removedItem.getName() + " khỏi yêu thích", Toast.LENGTH_SHORT).show();
+        });
         recyclerFavorites.setAdapter(adapter);
+
 
         // ViewModel
         comicViewModel = new ViewModelProvider(this).get(ComicViewModel.class);
