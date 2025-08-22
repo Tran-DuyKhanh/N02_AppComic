@@ -12,10 +12,11 @@
         android:id="@+id/toolbarFavorite"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="?attr/colorPrimary"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:title="Danh sách truyện yêu thích"
-        android:titleTextColor="@android:color/white"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:titleTextColor="@android:color/white" />
 
 
     <!-- Danh sách yêu thích -->

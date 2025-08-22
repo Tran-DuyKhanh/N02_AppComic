@@ -8,11 +8,12 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCategory"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="?attr/colorPrimary"
+        android:navigationIcon="@drawable/ic_back"
         android:title="Thể loại truyện"
-        android:titleTextColor="@android:color/white"
-        android:navigationIcon="@drawable/ic_back" />
+        android:titleTextColor="@android:color/white" />
 
     <!-- RecyclerView hiển thị 3 cột -->
     <androidx.recyclerview.widget.RecyclerView
