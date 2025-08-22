@@ -8,10 +8,11 @@
         android:id="@+id/toolbarRead"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="?attr/colorPrimary"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:title="Đọc truyện"
-        android:titleTextColor="@android:color/white"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        android:titleTextColor="@android:color/white" />
 
     <!-- RecyclerView chiếm phần trên -->
     <androidx.recyclerview.widget.RecyclerView

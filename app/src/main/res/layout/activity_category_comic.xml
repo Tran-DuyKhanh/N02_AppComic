@@ -10,10 +10,11 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCategoryComic"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="?attr/colorPrimary"
-        android:titleTextColor="@android:color/white"
-        android:navigationIcon="@drawable/ic_back" />
+        android:navigationIcon="@drawable/ic_back"
+        android:titleTextColor="@android:color/white" />
 
     <!-- Tiêu đề thể loại -->
     <TextView
