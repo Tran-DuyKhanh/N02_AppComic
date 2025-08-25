@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/card_background"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,7 +90,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Trần Duy Khánh – 2022604857\nTrần Duy Khánh – 2022604857\nTrần Duy Khánh – 2022604857\nTrần Duy Khánh – 2022604857\nTrần Duy Khánh – 2022604857"
+            android:text="Trần Duy Khánh – Code chính\nHoàng Đậu Huy – XD giao diện\nĐào Trung Hiếu – Tester\nNgô Tiến Thành – Đặc tả UC\nNguyễn Phan Anh Đức – Đặc tả UC"
             android:textSize="14sp"
             android:gravity="center" />
     </LinearLayout>

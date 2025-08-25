@@ -1,5 +1,6 @@
 package com.example.n02_appcomic;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -75,6 +76,7 @@ public class ReadChapterActivity extends AppCompatActivity {
         Button btnPrev = findViewById(R.id.btnPreviousChapter);
         Button btnNext = findViewById(R.id.btnNextChapter);
 
+
         btnPrev.setOnClickListener(v -> {
             if (currentIndex > 0) {
                 currentIndex--;
@@ -115,6 +117,32 @@ public class ReadChapterActivity extends AppCompatActivity {
 
     private void loadChapter() {
         if (chapterApiList == null || chapterApiList.isEmpty()) return;
+        // Cập nhật trạng thái nút
+        Button btnPrev = findViewById(R.id.btnPreviousChapter);
+        Button btnNext = findViewById(R.id.btnNextChapter);
+
+        // Trạng thái nút Prev
+        if (currentIndex > 0) {
+            btnPrev.setEnabled(true);
+            btnPrev.setBackgroundColor(getResources().getColor(R.color.purple_500)); // màu active
+            btnPrev.setTextColor(Color.WHITE);
+        } else {
+            btnPrev.setEnabled(false);
+            btnPrev.setBackgroundColor(Color.LTGRAY); // màu xám khi disable
+            btnPrev.setTextColor(Color.DKGRAY);
+        }
+
+        // Trạng thái nút Next
+        if (currentIndex < chapterApiList.size() - 1) {
+            btnNext.setEnabled(true);
+            btnNext.setBackgroundColor(getResources().getColor(R.color.purple_500));
+            btnNext.setTextColor(Color.WHITE);
+        } else {
+            btnNext.setEnabled(false);
+            btnNext.setBackgroundColor(Color.LTGRAY);
+            btnNext.setTextColor(Color.DKGRAY);
+        }
+
         String apiUrl = chapterApiList.get(currentIndex);
         comicViewModel.getChapterImages(apiUrl).observe(this, chapterObserver);
     }
